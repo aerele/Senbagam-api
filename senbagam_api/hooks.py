@@ -57,7 +57,7 @@ app_license = "MIT"
 # ------------
 
 # before_install = "senbagam_api.install.before_install"
-# after_install = "senbagam_api.install.after_install"
+after_install = "senbagam_api.after_install"
 
 # Desk Notifications
 # ------------------
@@ -100,7 +100,7 @@ app_license = "MIT"
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
+scheduler_events = {
 # 	"all": [
 # 		"senbagam_api.tasks.all"
 # 	],
@@ -116,7 +116,13 @@ app_license = "MIT"
 # 	"monthly": [
 # 		"senbagam_api.tasks.monthly"
 # 	]
-# }
+	"cron":{
+		"*/1 * * * *":[
+			"senbagam_api.cron.cron_create_quotation",
+			"senbagam_api.cron.cron_create_bank_account"
+		]
+	}
+}
 
 # Testing
 # -------
